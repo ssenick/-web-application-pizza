@@ -1,2 +1,2 @@
-# -web-application-pizza
+DEMO:
 Training site: React, Redux, SCSS
