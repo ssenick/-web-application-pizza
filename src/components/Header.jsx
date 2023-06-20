@@ -1,5 +1,6 @@
 import React from 'react';
-import {images} from "../../assets/images";
+import {images} from "../assets/images";
+import Button from "./UI/Button";
 
 const Header = () => {
    return (
@@ -14,7 +15,7 @@ const Header = () => {
 
             </div>
             <div className="header__cart">
-               <a href="/cart.html" className="button button--cart">
+               <Button cart>
                   <span>520 $</span>
                   <div className="button__delimiter"></div>
                   <svg
@@ -47,7 +48,8 @@ const Header = () => {
                      />
                   </svg>
                   <span>3</span>
-               </a>
+               </Button>
+
             </div>
          </div>
       </header>

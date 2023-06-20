@@ -1,8 +1,19 @@
 import React from "react";
 import './scss/app.scss'
-import Header from "./components/Header/Header";
+import Header from "./components/Header";
+import Categories from "./components/Categories";
+
+
+const categories = [
+   "Meat",
+   "Vegetarian",
+   "Grill",
+   "Spicy",
+   "Closed"
+]
 
 function App() {
+
    return (
       <div className="App">
          <div className="wrapper">
@@ -10,16 +21,7 @@ function App() {
             <div className="content">
                <div className="container">
                   <div className="content__top">
-                     <div className="categories">
-                        <ul>
-                           <li className="active">All</li>
-                           <li>Meat</li>
-                           <li>Vegetarian</li>
-                           <li>Grill</li>
-                           <li>Spicy</li>
-                           <li>Closed</li>
-                        </ul>
-                     </div>
+                     <Categories categories={categories}/>
                      <div className="sort">
                         <div className="sort__label">
                            <svg
