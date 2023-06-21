@@ -3,21 +3,45 @@
 @import 'libs/normalize';
 
 @import 'components/all';
-
+html,
+body {
+  height: 100%;
+}
 body {
   background-color: $background;
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 650px) {
+    padding: 15px 0;
+  }
 }
-
+#root{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.App{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
 .wrapper {
   width: calc(100vw - 100px);
   height: 100%;
   background-color: #fff;
-  margin: 50px auto;
+  margin: 0 auto;
   border-radius: 10px;
   max-width: 1400px;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
   @media (max-width: 650px) {
     width: calc(100vw - 30px);
-    margin: 15px auto;
+  }
+  .main{
+    flex: 1 1 auto;
   }
 }
 

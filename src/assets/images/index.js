@@ -1,20 +1,12 @@
-import arrowTop from  './arrow-top.svg';
-import cart from './cart.svg';
-import emptyCart from './empty-cart.png';
-import greyArrowLeft from './grey-arrow-left.svg';
-import pizzaLogo from './pizza-logo.svg';
-import plus from './plus.svg';
-import trash from './trash.svg'
+export {default as arrowTop } from  './arrow-top.svg';
+export {default as cart} from './cart.svg';
+export {default as emptyCart} from './empty-cart.png';
+export {default as greyArrowLeft} from './grey-arrow-left.svg';
+export {default as pizzaLogo} from './pizza-logo.svg';
+export {default as plus} from './plus.svg';
+export { default as trash} from './trash.svg'
 
-export  const  images = {
-   arrowTop,
-   cart,
-   emptyCart,
-   greyArrowLeft,
-   pizzaLogo,
-   plus,
-   trash
-}
+
 
 
 

@@ -3,6 +3,10 @@
 .header {
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
+  background-color: #fff8e9;
+  @media (max-width: 700px) {
+    padding: 20px 0;
+  }
   .container {
     display: flex;
     align-items: center;

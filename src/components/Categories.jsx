@@ -9,10 +9,17 @@ const Categories = ({categories}) => {
    return (
       <div className="categories">
          <ul>
-            <li onClick={()=>setActiveCategory(null)} className={activeCategory == null ?   'active': ''}>All</li>
+            <li onClick={()=>setActiveCategory(null)}
+                className={activeCategory == null ?   'active': ''}>
+               All
+            </li>
             {categories &&
                categories.map((category,index)=>
-                  <li onClick={()=>onClickCategories(index)} className={activeCategory === index ? 'active' : ''} key={`${category}_${index}`}>{category}</li>
+                  <li onClick={()=>onClickCategories(index)}
+                      className={activeCategory === index ? 'active' : ''}
+                      key={`${category}_${index}`}>
+                     {category}
+                  </li>
                )}
          </ul>
       </div>
