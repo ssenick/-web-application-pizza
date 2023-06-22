@@ -116,13 +116,16 @@
 
     &:hover {
       i {
+
         background-color: #fff;
         color: $orange;
       }
     }
 
     i {
-      display: inline-block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 30px;
       background-color: $orange;
       color: #fff;

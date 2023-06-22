@@ -4,10 +4,9 @@
   overflow: hidden;
   ul {
     display: flex;
-    //flex-wrap: wrap;
+    flex-wrap: wrap;
     row-gap: 15px;
-    overflow: auto;
-    min-width: 100%;
+
 
     &::-webkit-scrollbar {
       width: 0;
