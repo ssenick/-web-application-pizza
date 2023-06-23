@@ -15,6 +15,7 @@ const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
    }
 
 
+
    return (
       <div className="pizza-block">
          <img
@@ -27,13 +28,14 @@ const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
             <ul>
                {content.availableTypes.map((type, index) => (
                   <li
-                     onClick={()=>{
+                     onClick={() => {
                         setTypesItem(index)
                      }}
                      key={type}
                      className={classNames({
                         'active': index === activeTypes,
                         'disabled': !types.includes(index)
+
                      })}>
                      {type}
                   </li>
@@ -43,14 +45,16 @@ const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
             <ul>
                {content.availableSizes.map((size, index) => (
                   <li
-                     onClick={()=>{
+                     onClick={() => {
                         setSizesItem(index)
                      }}
                      key={size}
                      className={classNames({
                         'active': index === activeSizes,
                         'disabled':!sizes.includes(size)
+
                      })}>
+
                      {size} sm.
                   </li>
                ))}
