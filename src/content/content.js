@@ -7,14 +7,10 @@ export const content = {
       "Closed"
    ],
    sortItems: [
-      // {name:'popularity',type: 'rating', order:'desc'},
-      // {name:'price ↓',type: 'price', order:'desc'},
-      // {name:'price ↑',type: 'price', order:'abc'},
-      // {name:'alphabet',type: 'name', order:'desc'},
-      'popularity',
-      'price ↓',
-      'price ↑',
-      'alphabet'
+      {name:'popularity',type: 'rating', order:'desc'},
+      {name:'price ↓',type: 'price', order:'desc'},
+      {name:'price ↑',type: 'price', order:'abc'},
+      {name:'alphabet',type: 'name', order:'abc'},
    ],
    availableTypes: ['Thin', 'Traditional'],
    availableSizes: [26, 30, 40],

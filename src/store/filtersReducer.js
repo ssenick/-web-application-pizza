@@ -1,6 +1,6 @@
 const defaultState = {
    category: null,
-   sortBy: 0
+   sortBy: {id:0,name:'popularity',type:'rating',order:'desk'}
 }
 const SET_BY_CATEGORY = 'SET_BY_CATEGORY';
 const SET_SORT_BY = 'SET_SORT_BY';

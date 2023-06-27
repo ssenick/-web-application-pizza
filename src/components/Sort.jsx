@@ -4,7 +4,7 @@ import React, {memo, useEffect, useState} from 'react';
 const Sort = memo(
    ({sortItems,onSelectSort,filterSelectSort}) => {
       const [isSortVisibly, setIsSortVisibly] = useState(false);
-
+      const activeItem = sortItems.find(obj => obj.name === filterSelectSort.name )
 
       const clickOutside = () => {
          setIsSortVisibly(false);
@@ -22,8 +22,8 @@ const Sort = memo(
          setIsSortVisibly(!isSortVisibly)
       }
 
-      const sortClick = (index) => {
-         onSelectSort(index)
+      const sortClick = (item) => {
+         onSelectSort(item)
          setIsSortVisibly(false);
       }
       return (
@@ -43,16 +43,16 @@ const Sort = memo(
                   />
                </svg>
                <b>Sort by:</b>
-               <span onClick={togglePopup}>{sortItems[filterSelectSort]}</span>
+               <span onClick={togglePopup}>{activeItem.name}</span>
             </div>
             {isSortVisibly &&
                <div className="sort__popup">
                   <ul>
                      {sortItems &&
                         sortItems.map((item, index) =>
-                           <li onClick={() => sortClick(index)} key={item}
-                               className={filterSelectSort === index ? 'active' : ''}>
-                              {item}
+                           <li onClick={() => sortClick({...item,id:index})} key={item.name}
+                               className={filterSelectSort.id === index ? 'active' : ''}>
+                              {item.name}
                            </li>
                         )}
                   </ul>

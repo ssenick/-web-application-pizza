@@ -14,21 +14,21 @@ const HomePage = () => {
    const filterSelectCategory = useSelector(state => state.filters.category);
    const filterSelectSort = useSelector(state => state.filters.sortBy);
 
-   const [fetchPizzas, isLoadedPizzas, errorPizzas] = useFetching(async (filterSelectCategory) => {
-      const {data} = await PizzasServices.getAll(filterSelectCategory)
+   const [fetchPizzas, isLoadedPizzas, errorPizzas] = useFetching(async (filterSelectCategory,filterSelectSort) => {
+      const {data} = await PizzasServices.getAll(filterSelectCategory,filterSelectSort)
       dispatch(AllPizzasAction(data))
    });
    useEffect(() => {
-      fetchPizzas(filterSelectCategory)
-      console.log(filterSelectCategory)
-   }, [filterSelectCategory]);
+      fetchPizzas(filterSelectCategory,filterSelectSort)
+   }, [filterSelectCategory,filterSelectSort]);
 
 
    const onSelectCategory = useCallback(index =>{
       dispatch(setByCategory(index));
    },[])
-   const onSelectSort = useCallback((index) =>{
-      dispatch(setSortBy(index));
+   const onSelectSort = useCallback((item) =>{
+
+      dispatch(setSortBy(item));
 
    },[])
 
