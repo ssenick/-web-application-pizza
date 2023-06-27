@@ -2,12 +2,12 @@ import {applyMiddleware, combineReducers, legacy_createStore as createStore} fro
 import {pizzasReducer} from "./pizzasReduser";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from 'redux-thunk'
-import {filters} from "./filters";
+import {filtersReducer} from "./filtersReducer";
 
 
 const rootReducer = combineReducers({
    pizzas: pizzasReducer,
-   filters: filters
+   filters: filtersReducer
 })
 
 export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)))

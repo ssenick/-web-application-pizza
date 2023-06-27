@@ -1,17 +1,17 @@
 const defaultState = {
-   category: 0,
-   sortBy: 'popularity'
+   category: null,
+   sortBy: 0
 }
 const SET_BY_CATEGORY = 'SET_BY_CATEGORY';
 const SET_SORT_BY = 'SET_SORT_BY';
 
 
-export const filters = (state = defaultState, action) => {
+export const filtersReducer = (state = defaultState, action) => {
    switch (action.type) {
       case SET_BY_CATEGORY:
-         return {...state, category: action}
+         return {...state, category: action.payload}
       case SET_SORT_BY:
-         return {...state, sortBy: action}
+         return {...state, sortBy: action.payload}
       default:
          return state;
    }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Button} from "./index";
-import {content} from "../content/content";
+import {Button} from "../index";
+import {content} from "../../content/content";
 import classNames from "classnames";
 
 const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
