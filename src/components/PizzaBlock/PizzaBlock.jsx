@@ -3,9 +3,9 @@ import {Button} from "../index";
 import {content} from "../../content/content";
 import classNames from "classnames";
 
-const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
+const PizzaBlock = ({id, imageUrl, name, price, types, sizes, addOrderPizza}) => {
    const [activeTypes, setTypesActive] = useState(types[0])
-   const [activeSizes, setSizesActive] = useState(null)
+   const [activeSizes, setSizesActive] = useState(sizes[0])
 
    const setTypesItem = (index) => {
       setTypesActive(index)
@@ -14,7 +14,9 @@ const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
       setSizesActive(index)
    }
 
-
+   const addPizza = () => {
+      addOrderPizza({id,imageUrl,name,price,types:types[activeTypes],sizes:activeSizes})
+   }
 
    return (
       <div className="pizza-block">
@@ -46,15 +48,13 @@ const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
                {content.availableSizes.map((size, index) => (
                   <li
                      onClick={() => {
-                        setSizesItem(index)
+                        setSizesItem(size)
                      }}
                      key={size}
                      className={classNames({
-                        'active': index === activeSizes,
-                        'disabled':!sizes.includes(size)
-
+                        'active': size === activeSizes ,
+                        'disabled': !sizes.includes(size)
                      })}>
-
                      {size} sm.
                   </li>
                ))}
@@ -62,7 +62,7 @@ const PizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
          </div>
          <div className="pizza-block__bottom">
             <div className="pizza-block__price">from {price} $</div>
-            <Button outline add>
+            <Button onClick={addPizza} outline add>
                <svg
                   width="12"
                   height="12"

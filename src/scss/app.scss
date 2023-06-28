@@ -7,8 +7,8 @@
 html,
 body {
   height: 100%;
-  
-  
+
+
 }
 
 body {
@@ -95,9 +95,14 @@ body {
 }
 
 .cart {
+  display: grid;
+  gap: 50px;
+
   &__top {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
     align-items: center;
   }
 
@@ -156,14 +161,34 @@ body {
     display: flex;
     width: 100%;
     border-top: 1px solid $gray-line;
-    padding-top: 30px;
-    margin-top: 30px;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-line;
+    gap: 20px;
+    @media (max-width: 850px){
+       display:grid;
+    }
+    &-column {
+      flex: 0 1 50%;
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+      row-gap: 20px;
+      flex-wrap: wrap;
+      &:first-child {
+        flex: 0 1 60%;
+      }
+
+      &:last-child {
+        flex: 0 1 40%;
+      }
+
+    }
 
     &-img {
       display: flex;
       align-items: center;
-      margin-right: 15px;
-      width: 10%;
+
+      flex: 0 1 80px;
 
       img {
         width: 80px;
@@ -175,7 +200,7 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 40%;
+      flex: 1 1 auto;
 
       h3 {
         font-weight: bold;
@@ -194,7 +219,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 13%;
+      gap: 22px;
 
       &-minus {
         svg {
@@ -213,8 +238,8 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 33%;
-
+      flex: 1 1 auto;
+      white-space: nowrap;
       b {
         font-weight: bold;
         font-size: 22px;
@@ -226,7 +251,6 @@ body {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      width: 4%;
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -262,7 +286,8 @@ body {
     &-details {
       display: flex;
       justify-content: space-between;
-
+      flex-wrap: wrap;
+      gap: 15px;
       span {
         font-size: 22px;
 
@@ -278,7 +303,8 @@ body {
       display: flex;
       justify-content: space-between;
       margin-top: 40px;
-
+      flex-wrap: wrap;
+      gap: 15px;
       .go-back-btn {
         display: flex;
         align-items: center;

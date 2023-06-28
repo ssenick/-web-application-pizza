@@ -6,18 +6,20 @@ import {AllPizzasAction} from "../store/pizzasReduser";
 import PizzasServices from "../API/pizzasServices";
 import {useFetching} from "../hooks/useFetching";
 import {setByCategory, setSortBy} from "../store/filtersReducer";
+import {cartReducer, setCart} from "../store/cartReducer";
 
 
 const HomePage = () => {
    const dispatch = useDispatch();
    const pizzasItems = useSelector(state => state.pizzas.items);
-   const filterSelectCategory = useSelector(state => state.filters.category);
-   const filterSelectSort = useSelector(state => state.filters.sortBy);
+   const filterSelectCategory = useSelector(({filters}) => filters.category);
+   const filterSelectSort = useSelector(({filters}) => filters.sortBy);
 
    const [fetchPizzas, isLoadedPizzas, errorPizzas] = useFetching(async (filterSelectCategory,filterSelectSort) => {
       const {data} = await PizzasServices.getAll(filterSelectCategory,filterSelectSort)
       dispatch(AllPizzasAction(data))
    });
+
    useEffect(() => {
       fetchPizzas(filterSelectCategory,filterSelectSort)
    }, [filterSelectCategory,filterSelectSort]);
@@ -26,12 +28,14 @@ const HomePage = () => {
    const onSelectCategory = useCallback(index =>{
       dispatch(setByCategory(index));
    },[])
+
    const onSelectSort = useCallback((item) =>{
-
       dispatch(setSortBy(item));
-
    },[])
 
+   const addOrderPizza = useCallback((arr) => {
+      dispatch(setCart(arr))
+   },[])
 
    return (
       <div className="content">
@@ -51,7 +55,7 @@ const HomePage = () => {
                {!isLoadedPizzas &&
                   pizzasItems &&
                   pizzasItems.map(item => (
-                     <PizzaBlock key={item.id} {...item}/>
+                     <PizzaBlock    addOrderPizza={addOrderPizza} key={item.id} {...item}/>
                   ))
                }
                {errorPizzas &&
