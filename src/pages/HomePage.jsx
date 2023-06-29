@@ -6,7 +6,8 @@ import {AllPizzasAction} from "../store/pizzasReduser";
 import PizzasServices from "../API/pizzasServices";
 import {useFetching} from "../hooks/useFetching";
 import {setByCategory, setSortBy} from "../store/filtersReducer";
-import {cartReducer, setCart} from "../store/cartReducer";
+import { setCart} from "../store/cartReducer";
+
 
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
    const pizzasItems = useSelector(state => state.pizzas.items);
    const filterSelectCategory = useSelector(({filters}) => filters.category);
    const filterSelectSort = useSelector(({filters}) => filters.sortBy);
+   const cartItems = useSelector(({cart}) => cart.items);
 
    const [fetchPizzas, isLoadedPizzas, errorPizzas] = useFetching(async (filterSelectCategory,filterSelectSort) => {
       const {data} = await PizzasServices.getAll(filterSelectCategory,filterSelectSort)
@@ -55,7 +57,10 @@ const HomePage = () => {
                {!isLoadedPizzas &&
                   pizzasItems &&
                   pizzasItems.map(item => (
-                     <PizzaBlock    addOrderPizza={addOrderPizza} key={item.id} {...item}/>
+                     <PizzaBlock    addOrderPizza={addOrderPizza}
+                                    key={item.id}
+                                    addedPizzas={cartItems[item.id]?.items && cartItems[item.id].items.length}
+                                    {...item}/>
                   ))
                }
                {errorPizzas &&
