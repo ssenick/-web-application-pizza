@@ -1,3 +1,4 @@
+import {produce} from "immer"
 const defaultState = {
    items: {},
    fullPrice: 0,
@@ -46,17 +47,19 @@ export const cartReducer = (state = defaultState, action) => {
          }
 
       case REMOVE_ITEM: {
-
-         const newCartsPizzas = {
-            ...state.items
-         }
-
-         delete newCartsPizzas[action.id]
-
-         return {
-            ...state,
-            items: newCartsPizzas,
-         }
+         // const newCartsPizzas = {
+         //    ...state.items
+         // }
+         // delete newCartsPizzas[action.id]
+         // return {
+         //    ...state,
+         //    items: newCartsPizzas,
+         // }
+         return produce(state,draft => {
+            const price = draft.fullPrice - draft.items[action.id].totalPricePizzas;
+            let totalPrice = draft.fullPrice = price;
+            const arr = delete draft.items[action.id]
+         })
       }
 
 
