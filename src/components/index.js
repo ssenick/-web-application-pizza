@@ -6,4 +6,6 @@ export {default as Categories} from './Categories'
 export {default as PizzaBlock} from './PizzaBlock/PizzaBlock'
 export {default as Button} from './UI/Button'
 export {default as PizzaSkeleton} from './PizzaBlock/PizzaSkeleton'
+export {default as CartEmpty} from './CartEmpty'
+export {default as CartPizza} from './CartPizza'
 

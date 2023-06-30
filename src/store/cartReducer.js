@@ -5,6 +5,8 @@ const defaultState = {
 }
 
 const SET_CART = "SET_CART";
+const EMPTY_CART = "EMPTY_CART";
+const REMOVE_ITEM = 'REMOVE_ITEM';
 
 const getTotalPrice = (arr) => arr.reduce((acc, item) => item.price + acc, 0)
 export const cartReducer = (state = defaultState, action) => {
@@ -22,7 +24,7 @@ export const cartReducer = (state = defaultState, action) => {
             [action.payload.id]: {
                items: pizzas,
                totalPizzas: pizzas.length,
-               totalPricePizzas: getTotalPrice(pizzas)
+               totalPricePizzas: getTotalPrice(pizzas),
             }
          }
 
@@ -36,6 +38,26 @@ export const cartReducer = (state = defaultState, action) => {
             allProducts: Object.keys(arrFinal).length,
          }
       }
+      case EMPTY_CART:
+         return {
+            items: {},
+            fullPrice: 0,
+            allProducts: 0,
+         }
+
+      case REMOVE_ITEM: {
+
+         const newCartsPizzas = {
+            ...state.items
+         }
+
+         delete newCartsPizzas[action.id]
+
+         return {
+            ...state,
+            items: newCartsPizzas,
+         }
+      }
 
 
       default:
@@ -45,4 +67,11 @@ export const cartReducer = (state = defaultState, action) => {
 
 export const setCart = (payload) => (
    {type: SET_CART, payload}
+)
+export const emptyCart = () => (
+   {type: EMPTY_CART}
+)
+export const removeItem = (id) => (
+
+   {type: REMOVE_ITEM, id}
 )

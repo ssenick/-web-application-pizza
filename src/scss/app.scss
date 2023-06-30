@@ -355,6 +355,10 @@ body {
     h2 {
       font-size: 32px;
       margin-bottom: 10px;
+      span {
+        position: relative;
+        top: 2px;
+      }
     }
 
     p {
@@ -364,10 +368,7 @@ body {
       color: #777777;
     }
 
-    icon {
-      position: relative;
-      top: 2px;
-    }
+
 
     img {
       display: block;

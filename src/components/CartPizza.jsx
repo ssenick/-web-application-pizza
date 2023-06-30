@@ -1,7 +1,11 @@
 import React from 'react';
 
-const CartPizza = ({name,types,sizes,imageUrl,totalPrice,totalCount}) => {
-   console.log(name,sizes)
+const CartPizza = ({id,name,types,sizes,imageUrl,totalPrice,totalCount,removeItems}) => {
+
+   const  handlerRemoveItems = (id) => {
+      removeItems(id)
+   }
+
    return (
       <div className="cart__item">
          <div className="cart__item-column">
@@ -14,7 +18,7 @@ const CartPizza = ({name,types,sizes,imageUrl,totalPrice,totalCount}) => {
             </div>
             <div className="cart__item-info">
                <h3>{name}</h3>
-               <p>{types} dough, {sizes} sm.</p>
+               {/*<p>{types} dough, {sizes} sm.</p>*/}
             </div>
          </div>
          <div className="cart__item-column">
@@ -49,7 +53,7 @@ const CartPizza = ({name,types,sizes,imageUrl,totalPrice,totalCount}) => {
                <b>{totalPrice} $</b>
             </div>
             <div className="cart__item-remove">
-               <div className="button button--outline button--circle">
+               <div onClick={() => handlerRemoveItems(id)} className="button button--outline button--circle">
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                        xmlns="http://www.w3.org/2000/svg">
                      <path
