@@ -56,8 +56,8 @@ export const cartReducer = (state = defaultState, action) => {
          //    items: newCartsPizzas,
          // }
          return produce(state,draft => {
-            const price = draft.fullPrice - draft.items[action.id].totalPricePizzas;
-            let totalPrice = draft.fullPrice = price;
+            const price = draft.fullPrice = draft.fullPrice - draft.items[action.id].totalPricePizzas;
+            const totalPizzas = draft.allProducts = draft.allProducts - draft.items[action.id].totalPizzas;
             const arr = delete draft.items[action.id]
          })
       }
