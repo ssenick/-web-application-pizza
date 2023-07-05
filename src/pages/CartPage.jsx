@@ -1,13 +1,13 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {CartEmpty, CartPizza} from "../components";
-import {emptyCart, removeItem} from "../store/cartReducer";
+import {emptyCart, minusCountPizza, plusCountPizza, removeItem} from "../store/cartReducer";
+import {Link} from "react-router-dom";
 
 const CartPage = () => {
    const dispatch = useDispatch();
    const {pizzasItems, fullPrice, allProducts} = useSelector(({cart}) => ({
       pizzasItems: cart.items,
-
       fullPrice: cart.fullPrice,
       allProducts: cart.allProducts
    }));
@@ -17,6 +17,13 @@ const CartPage = () => {
    }
    const removeItems = (id) => {
       dispatch(removeItem(id))
+   }
+
+   const onCountMinus = (id) => {
+      dispatch(minusCountPizza(id))
+   }
+   const onCountPlus = (id) => {
+      dispatch(plusCountPizza(id))
    }
    // const pizzasItems = useSelector(({cart}) => cart.items)
    // const fullPrice = useSelector(({cart}) => cart.fullPrice)
@@ -63,6 +70,8 @@ const CartPage = () => {
                      {addedPizzas && addedPizzas.map(item =>
                         <CartPizza totalCount={pizzasItems[item.id].totalPizzas}
                                    totalPrice={pizzasItems[item.id].totalPricePizzas}
+                                   onCountMinus={onCountMinus}
+                                   onCountPlus={onCountPlus}
                                    key={item.name}
                                    name={item.name}
                                    id={item.id}
@@ -79,16 +88,16 @@ const CartPage = () => {
                         <span> Order price: <b>{fullPrice} $</b> </span>
                      </div>
                      <div className="cart__bottom-buttons">
-                        <a href="/" className="button button--outline button--add go-back-btn">
+                        <Link to='/' className="button button--outline button--add go-back-btn">
                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5"
                                     strokeLinecap="round" strokeLinejoin="round"/>
                            </svg>
 
-                           <span>Вернуться назад</span>
-                        </a>
+                           <span>Come back</span>
+                        </Link>
                         <div className="button pay-btn">
-                           <span>Оплатить сейчас</span>
+                           <span>Pay now</span>
                         </div>
                      </div>
                   </div>

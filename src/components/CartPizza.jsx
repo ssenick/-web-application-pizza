@@ -1,11 +1,16 @@
 import React from 'react';
 
-const CartPizza = ({id,name,types,sizes,imageUrl,totalPrice,totalCount,removeItems}) => {
+const CartPizza = ({id,name,types,sizes,imageUrl,totalPrice,totalCount,removeItems,onCountMinus,onCountPlus}) => {
 
    const  handlerRemoveItems = (id) => {
       removeItems(id)
    }
-
+   const handlerCountMinus = (id) => {
+      onCountMinus(id)
+   }
+   const handlerCountPlus = (id) => {
+      onCountPlus(id)
+   }
    return (
       <div className="cart__item">
          <div className="cart__item-column">
@@ -23,7 +28,7 @@ const CartPizza = ({id,name,types,sizes,imageUrl,totalPrice,totalCount,removeIte
          </div>
          <div className="cart__item-column">
             <div className="cart__item-count">
-               <div className="button button--outline button--circle cart__item-count-minus">
+               <div onClick={() => handlerCountMinus(id)} className="button button--outline button--circle cart__item-count-minus">
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                        xmlns="http://www.w3.org/2000/svg">
                      <path
@@ -36,7 +41,7 @@ const CartPizza = ({id,name,types,sizes,imageUrl,totalPrice,totalCount,removeIte
 
                </div>
                <b>{totalCount}</b>
-               <div className="button button--outline button--circle cart__item-count-plus">
+               <div onClick={() => handlerCountPlus(id)} className="button button--outline button--circle cart__item-count-plus">
                   <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                        xmlns="http://www.w3.org/2000/svg">
                      <path

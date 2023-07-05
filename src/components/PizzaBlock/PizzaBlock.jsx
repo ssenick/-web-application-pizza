@@ -61,7 +61,7 @@ const PizzaBlock = memo(
                </ul>
             </div>
             <div className="pizza-block__bottom">
-               <div className="pizza-block__price">from {price} $</div>
+               <div className="pizza-block__price">from: {price} $</div>
                <Button onClick={addPizza} outline add>
                   <svg
                      width="12"
